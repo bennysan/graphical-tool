@@ -5,12 +5,17 @@ export function PointDebug(vertices) {
 
   this.show = (ctx) => {
     ctx.fillStyle = "lightgreen";
-    ctx.font = "16px Arial";
+    ctx.font = "12px Arial";
+    ctx.textBaseline = "middle";
 
     this.vertices.forEach((vertex, i) => {
       ctx.beginPath();
-      ctx.arc(vertex.x, vertex.y, 5, 0, Math.PI * 2);
-      ctx.fillText("p" + i, vertex.x + 10, vertex.y + 20);
+      ctx.arc(vertex.x, vertex.y, 4, 0, Math.PI * 2);
+      ctx.fillText(
+        "p" + i + "x: " + Math.floor(vertex.x) + "y: " + Math.floor(vertex.y),
+        vertex.x + 10,
+        vertex.y + 10
+      );
       ctx.fill();
     });
   };

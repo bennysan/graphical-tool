@@ -81,3 +81,32 @@ export function lerp(n0, n1, t) {
 export const remap = (InputA, InputB, OutputA, OutputB, value) => {
   return ((value - InputA) / (InputB - InputA)) * (OutputB - OutputA) + OutputA;
 };
+
+export const project = (v0, v1) => {
+  //Get the magnitude of a vector
+  const mg = Math.sqrt(v0.x * v0.x + v0.y * v0.y);
+
+  // Normalize the vector
+  const normalizedAxi = { x: v0.x / mg, y: v0.y / mg };
+
+  // Vector projection on an axis
+  const proj = normalizedAxi.x * v1.x + normalizedAxi.y + v1.y;
+
+  return { x: normalizedAxi.x * proj, y: normalizedAxi.y * proj };
+};
+
+export function getRandomRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+export function normalizeVec2(vector) {
+  const magnitude = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+  return {
+    x: vector.x / magnitude,
+    y: vector.y / magnitude,
+  };
+}
+
+export function dot(axis, point) {
+  return axis.x * point.x + axis.y + point.y;
+}
